@@ -43,5 +43,12 @@ modules:
       - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}" --prefix=/app "scipy==1.14.0" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/4e/e5/0230da034a2e1b1feb32621d7cd57c59484091d6dccc9e6b855b0d309fc9/scipy-1.14.0.tar.gz
-        sha256: b5923f48cb840380f9854339176ef21763118a7300a88203ccd0bdd26e58527b
+        only-arches:
+          - x86_64
+        url: https://files.pythonhosted.org/packages/89/bb/80c9c98d887c855710fd31fc5ae5574133e98203b3475b07579251803662/scipy-1.14.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+        sha256: 9e3154691b9f7ed73778d746da2df67a19d046a6c8087c8b385bc4cdb2cfca74
+      - type: file
+        only-arches:
+          - aarch64
+        url: https://files.pythonhosted.org/packages/6c/bb/f44e22697740893ffa84239ca3766bdb908c1c7135ebb272d5bd4bdc33e2/scipy-1.14.0-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl
+        sha256: 9eee2989868e274aae26125345584254d97c56194c072ed96cb433f32f692ed8
