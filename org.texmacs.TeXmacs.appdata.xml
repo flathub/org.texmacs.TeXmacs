@@ -21,7 +21,7 @@
 	</p>
         <p>
             This package contains:
-                TeXLive, Gnuplot, SymPy, Graphviz.
+                TeXLive, Gnuplot, SymPy, Graphviz and Eukleides.
         </p>
     </description>
 
