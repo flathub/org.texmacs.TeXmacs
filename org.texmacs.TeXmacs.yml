@@ -97,6 +97,8 @@ modules:
         path: patch-eukleides/utf-8.patch
       - type: script   
         dest-filename: configure
+        commands:
+          - #/bin/sh
         
   - name: guile
     buildsystem: autotools
