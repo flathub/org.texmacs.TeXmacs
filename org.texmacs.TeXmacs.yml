@@ -34,7 +34,14 @@ modules:
     build-commands:
       - install -d /app/texlive
       - install -d /app/plugins
-
+      
+  - name: eukleides
+    buildsystem: simple
+    sources:
+      - type: archive
+        url: http://www.eukleides.org/files/eukleides-1.5.4.tar.bz2
+        sha256: 18c489460cb2cb98f4ea9c0187519ef77b4422117fd43bcd4e4836580ef40c69
+        
   - name: dictEs-aspell
     buildsystem: simple
     build-commands:
