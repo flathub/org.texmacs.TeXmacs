@@ -18,7 +18,7 @@ add-extensions:
     directory: texlive
     autodelete: false
   org.texmacs.TeXmacs.Plugin:
-    versions: stable
+    versions: stable;beta;test
     directory: plugins
     subdirectories: true
     no-autodownload: true
