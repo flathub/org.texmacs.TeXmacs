@@ -1,116 +1,57 @@
 app-id: org.texmacs.TeXmacs
 runtime: org.kde.Platform
-runtime-version: "5.15-23.08"
+runtime-version: 6.7
 sdk: org.kde.Sdk
-command: startTeXmacs.sh
-rename-desktop-file: texmacs.desktop
-rename-icon: texmacs
+base: io.qt.qtwebengine.BaseApp
+base-version: 6.7
+command: texmaker
+rename-desktop-file: texmaker.desktop
+rename-appdata-file: texmaker.metainfo.xml
+rename-icon: texmaker
 finish-args:
-  - --socket=x11
-  - --device=dri
+  - --socket=fallback-x11
   - --share=ipc
+  - --socket=wayland
+  - --device=dri
   - --filesystem=xdg-documents
-  - --persist=.TeXmacs
+  - --env=PATH=/app/texlive/bin/x86_64-linux:/app/texlive/bin/aarch64-linux:/app/bin:/usr/bin  # required to find texlive binaries
+  - --env=TEXMFCACHE=$XDG_CACHE_HOME
+cleanup:
+  - /include
+  - '*.la'
+  - '*.a'
+cleanup-commands:
+  - /app/cleanup-BaseApp.sh
 
 add-extensions:
   org.freedesktop.Sdk.Extension.texlive:
-    version: "23.08"
-    directory: texlive
-    autodelete: false
-  org.texmacs.TeXmacs.Plugin:
-    versions: stable
-    directory: plugins
-    subdirectories: true
-    no-autodownload: true
-    autodelete: true
-    add-ld-path: lib
+    version: '23.08'
+    directory: texlive # this is relative to /app
 
 modules:
-
-  - pythonSoft.yml # symPy, numPy
-
-  - name: texliveYextensions
+  - name: texlive
     buildsystem: simple
     build-commands:
       - install -d /app/texlive
-      - install -d /app/plugins
 
-  - name: dictEs-aspell
-    buildsystem: simple
-    build-commands:
-      - ./configure
-      - make dictdir=/app/share/dicts datadir=/app/share/datadicts
-      - make dictdir=/app/share/dicts datadir=/app/share/datadicts install
-    sources:
-      - type: archive
-        url: https://ftp.gnu.org/gnu/aspell/dict/es/aspell6-es-1.11-2.tar.bz2
-        sha256: ad367fa1e7069c72eb7ae37e4d39c30a44d32a6aa73cedccbd0d06a69018afcc
-  - name: dictEn-aspell
-    buildsystem: simple
-    build-commands:
-      - ./configure
-      - make dictdir=/app/share/dicts datadir=/app/share/datadicts
-      - make dictdir=/app/share/dicts datadir=/app/share/datadicts install
-    sources:
-      - type: archive
-        url: https://ftp.gnu.org/gnu/aspell/dict/en/aspell6-en-2020.12.07-0.tar.bz2
-        sha256: 4c8f734a28a088b88bb6481fcf972d0b2c3dc8da944f7673283ce487eac49fb3
-  - name: magick
-    buildsystem: autotools
-    sources:
-      - type: archive
-        url: https://github.com/ImageMagick/ImageMagick/archive/refs/tags/7.1.1-21.tar.gz
-        sha256: 09402e5f17c6575ef9f010bb2e21ae1710f1f3426f115ad4317ee9129c32608e
-  - name: graphviz
-    buildsystem: autotools
-    sources:
-      - type: archive
-        url: https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/10.0.1/graphviz-10.0.1.tar.gz
-        sha256: 72e1a575e9c382c4fd2267837962bc4582b3d9ad746e338cd8024bdeca124f32
-  - name: gnuplot
-    buildsystem: autotools
-    sources:
-      - type: archive
-        url: https://prdownloads.sourceforge.net/gnuplot/5.4.10/gnuplot-5.4.10.tar.gz
-        sha256: 975d8c1cc2c41c7cedc4e323aff035d977feb9a97f0296dd2a8a66d197a5b27c
-  - name: guile
-    buildsystem: autotools
-    config-opts:
-      - --disable-static 
-      - --disable-error-on-warning
+  - name: texmaker
+    buildsystem: cmake-ninja
     build-options:
-      arch:
-        aarch64:
-          config-opts:
-            - --build=aarch64-unknown-linux-gnu
+      env:
+        QMAKEPATH: /app/lib
+    config-opts:
+      - DESKTOPDIR=/app/share/applications
+      - METAINFODIR=/app/share/metainfo
+      - ICONDIR=/app/share/icons/hicolor/256x256/apps/
+      - INCLUDEPATH+=/app/include/QtWebEngineWidgets
+      - LIBS+=-L/app/lib
+      - CONFIG+=force_debug_info
     sources:
       - type: archive
-        url: http://ftp.gnu.org/gnu/guile/guile-1.8.8.tar.gz
-        sha256: c3471fed2e72e5b04ad133bbaaf16369e8360283679bcf19800bc1b381024050
-      - type: patch
-        path: guile-1.8.8-configure.patch
-
-  - name: xdg-utils # temporary #fake
-    buildsystem: simple
-    build-commands:
-      - touch /app/bin/xdg-icon-resource /app/bin/xdg-mime /app/bin/xdg-desktop-menu 
-      - touch /app/bin/xdg-desktop-icon /app/bin/xdg-icon-resource
-      - chmod +x /app/bin/xdg-*
-    cleanup:
-      - /bin/xdg-*
-  - name: texmacs
-    buildsystem: autotools
-    post-install:
-      - install -Dm644 org.texmacs.TeXmacs.appdata.xml /app/share/appdata/org.texmacs.TeXmacs.appdata.xml
-      - install -Dm644 TeXmacs/misc/mime/texmacs.desktop /app/share/applications/texmacs.desktop
-      - desktop-file-edit --set-key=Exec --set-value="startTeXmacs.sh %F" /app/share/applications/texmacs.desktop
-      - install -Dm644 TeXmacs/misc/images/texmacs-256.png /app/share/icons/hicolor/256x256/apps/texmacs.png
-      - install -Dm755 startTeXmacs.sh /app/bin/startTeXmacs.sh
-    sources:
-      - type: archive
-        url: https://www.texmacs.org/Download/ftp/tmftp/source/TeXmacs-2.1.4-src.tar.gz
-        sha256: 87a6922ee0ddac0b55cce9cd54fa8c1165fd58b0c7b640a33f2f495d69c18186
-      - type: file
-        path: startTeXmacs.sh
-      - type: file
-        path: org.texmacs.TeXmacs.appdata.xml
+        url: https://www.xm1math.net/texmaker/texmaker-6.0.0.tar.bz2
+        sha256: 977ce580e25c1ab6e0bc3da103be0b43ebf60b8ce0d27273104fdd7f586177fc
+        x-checker-data:
+          type: html
+          url: https://www.xm1math.net/texmaker/download.html
+          version-pattern: DOWNLOAD version ([\d\.]+)
+          url-template: https://www.xm1math.net/texmaker/texmaker-$version.tar.bz2
