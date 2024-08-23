@@ -80,10 +80,9 @@ modules:
       make-install-args:
         - PREFIX=/app
     sources:
-      - type: git
-        url: https://github.com/janmarthedal/eukleides.git
-        tag: v1.5.4
-        commit: 1b4b532cf03fbfd88d6e634e612f4d8ba3d7de4b
+      - type: archive
+        url: http://deb.debian.org/debian/pool/main/e/eukleides/eukleides_1.5.4.orig.tar.gz
+        sha256: 5e72ad3c469bb37de7094d278af313e5620f9901c0af40bf8ad4df57e61e3ba6
       - type: patch
         path: patch-eukleides/cross.patch
       - type: patch
