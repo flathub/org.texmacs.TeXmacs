@@ -116,7 +116,14 @@ modules:
         sha256: c3471fed2e72e5b04ad133bbaaf16369e8360283679bcf19800bc1b381024050
       - type: patch
         path: guile-1.8.8-configure.patch
-
+  - name: pip
+    buildsystem: simple
+    build-commands:
+      - install -Dm755 pip.pyz -t /app/bin/
+    sources:
+      - type: file
+        url: https://bootstrap.pypa.io/pip/pip.pyz
+        sha256: c59df64b826d5baa978829fd1e1b3ea2e748f73dce7cce58d09aa28a1c9323a7
   - name: xdg-utils # temporary #fake
     buildsystem: simple
     build-commands:
@@ -133,6 +140,7 @@ modules:
       - desktop-file-edit --set-key=Exec --set-value="startTeXmacs.sh %F" /app/share/applications/texmacs.desktop
       - install -Dm644 TeXmacs/misc/images/texmacs-256.png /app/share/icons/hicolor/256x256/apps/texmacs.png
       - install -Dm755 startTeXmacs.sh /app/bin/startTeXmacs.sh
+      - ln -s /app/bin/pip.pyz /app/bin/pip
     sources:
       - type: archive
         url: https://www.texmacs.org/Download/ftp/tmftp/source/TeXmacs-2.1.4-src.tar.gz
