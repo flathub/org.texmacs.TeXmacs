@@ -6,11 +6,13 @@ command: startTeXmacs.sh
 rename-desktop-file: texmacs.desktop
 rename-icon: texmacs
 finish-args:
+  - --share=network
   - --socket=x11
   - --device=dri
   - --share=ipc
   - --filesystem=xdg-documents
   - --persist=.TeXmacs
+  - --env=PATH=/var/data/python/bin:/usr/bin:/app/bin
 
 add-extensions:
   org.freedesktop.Sdk.Extension.texlive:
