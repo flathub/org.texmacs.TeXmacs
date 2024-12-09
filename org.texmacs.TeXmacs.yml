@@ -6,6 +6,7 @@ command: startTeXmacs.sh
 rename-desktop-file: texmacs.desktop
 rename-icon: texmacs
 finish-args:
+  - --share=network
   - --socket=x11
   - --device=dri
   - --share=ipc
