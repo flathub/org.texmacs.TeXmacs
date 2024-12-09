@@ -25,7 +25,7 @@
         </p>
         <p>
 	    To install python packages inside the sandbox run: 
-		1) flatpak run --command=sh au.edu.uq.esys.escript 
+		1) flatpak run --command=sh org.texmacs.TeXmacs 
 		2) pip install --user package
 	</p>
     </description>
