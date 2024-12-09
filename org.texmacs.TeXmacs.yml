@@ -11,6 +11,7 @@ finish-args:
   - --share=ipc
   - --filesystem=xdg-documents
   - --persist=.TeXmacs
+  - --env=PATH=/var/data/python/bin:/usr/bin:/app/bin
 
 add-extensions:
   org.freedesktop.Sdk.Extension.texlive:
