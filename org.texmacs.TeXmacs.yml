@@ -12,7 +12,7 @@ finish-args:
   - --share=ipc
   - --filesystem=xdg-documents
   - --persist=.TeXmacs
-  - --env=PATH=/var/data/python/bin:/usr/bin:/app/bin
+  - --env=PATH=/var/data/python/bin:/app/bin:/usr/bin
 
 add-extensions:
   org.freedesktop.Sdk.Extension.texlive:
@@ -142,6 +142,7 @@ modules:
       - desktop-file-edit --set-key=Exec --set-value="startTeXmacs.sh %F" /app/share/applications/texmacs.desktop
       - install -Dm644 TeXmacs/misc/images/texmacs-256.png /app/share/icons/hicolor/256x256/apps/texmacs.png
       - install -Dm755 startTeXmacs.sh /app/bin/startTeXmacs.sh
+      - install -Dm755 xdg-open -t /app/bin/
       - ln -s /app/bin/pip.pyz /app/bin/pip
     sources:
       - type: archive
@@ -151,3 +152,5 @@ modules:
         path: startTeXmacs.sh
       - type: file
         path: org.texmacs.TeXmacs.appdata.xml
+      - type: file
+        path: xdg-open
