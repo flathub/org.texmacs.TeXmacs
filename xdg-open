@@ -1,3 +1,5 @@
+#!/bin/sh
+
 name=$(basename "$1")
 cp -u $1 "$XDG_RUNTIME_DIR/app/$FLATPAK_ID/"
 path_to_file="$XDG_RUNTIME_DIR/app/$FLATPAK_ID/$name"
