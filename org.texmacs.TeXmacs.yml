@@ -1,6 +1,6 @@
 app-id: org.texmacs.TeXmacs
 runtime: org.kde.Platform
-runtime-version: "5.15-23.08"
+runtime-version: "5.15-24.08"
 sdk: org.kde.Sdk
 command: startTeXmacs.sh
 rename-desktop-file: texmacs.desktop
@@ -16,7 +16,7 @@ finish-args:
 
 add-extensions:
   org.freedesktop.Sdk.Extension.texlive:
-    version: "23.08"
+    version: "24.08"
     directory: texlive
     autodelete: false
   org.texmacs.TeXmacs.Plugin:
