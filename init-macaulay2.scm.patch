@@ -1,0 +1,11 @@
+--- a/plugins/macaulay2/progs/init-macaulay2.scm	2025-01-16 19:07:06.549241683 -0500
++++ b/plugins/macaulay2/progs/init-macaulay2.scm	2025-01-16 19:08:32.128244731 -0500
+@@ -14,7 +14,7 @@
+ (plugin-configure macaulay2
+   (:macpath "Macaulay2*" "bin")
+   (:require (url-exists-in-path? "M2"))
+-  (:launch "M2 --texmacs")
++  (:launch "M2")
+   (:session "Macaulay 2"))
+ 
+ (when (supports-macaulay2?)
