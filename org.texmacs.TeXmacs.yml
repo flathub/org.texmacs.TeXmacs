@@ -154,5 +154,5 @@ modules:
         path: org.texmacs.TeXmacs.appdata.xml
       - type: file
         path: xdg-open
-      - file: patch
+      - type: patch
         path: init-macaulay2.scm.patch
