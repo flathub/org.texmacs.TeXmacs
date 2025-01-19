@@ -2,6 +2,8 @@ app-id: org.texmacs.TeXmacs
 runtime: org.kde.Platform
 runtime-version: "5.15-24.08"
 sdk: org.kde.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.texlive
 command: startTeXmacs.sh
 rename-desktop-file: texmacs.desktop
 rename-icon: texmacs
