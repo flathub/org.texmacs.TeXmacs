@@ -11,6 +11,7 @@ finish-args:
   - --device=dri
   - --share=ipc
   - --filesystem=xdg-documents
+  - --filesystem=~/.local/share/fonts:ro
   - --persist=.TeXmacs
   - --env=PATH=/var/data/python/bin:/app/bin:/usr/bin
 
@@ -144,6 +145,10 @@ modules:
       - install -Dm755 startTeXmacs.sh /app/bin/startTeXmacs.sh
       - install -Dm755 xdg-open -t /app/bin/
       - ln -s /app/bin/pip.pyz /app/bin/pip
+      - mkdir -p /app/share/fonts
+      - mkdir TempFonts
+      - cd TempFonts && find /app/texlive/texmf-dist/fonts -type f -regex ".*\.\(ttf\|otf\)$" -exec ln -s {} \;
+      - cp TempFonts/* /app/share/fonts/
     sources:
       - type: archive
         url: https://www.texmacs.org/Download/ftp/tmftp/source/TeXmacs-2.1.4-src.tar.gz
