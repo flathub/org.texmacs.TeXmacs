@@ -22,6 +22,8 @@ add-extensions:
     version: "24.08"
     directory: texlive
     autodelete: false
+    no-autodownload: true
+    add-ld-path: lib
   org.texmacs.TeXmacs.Plugin:
     versions: stable;beta;test;master
     directory: plugins
