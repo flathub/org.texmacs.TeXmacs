@@ -15,7 +15,7 @@ finish-args:
   - --filesystem=xdg-documents
   - --filesystem=~/.local/share/fonts:ro
   - --persist=.TeXmacs
-  - --env=PATH=/var/data/python/bin:/app/bin:/usr/bin:/app/plugins/pack1/bin:/app/maxima/bin
+  - --env=PATH=/var/data/python/bin:/app/bin:/usr/bin:/app/plugins/pack1/bin:/app/maxima/bin:/app/texlive/bin
 
 add-extensions:
   org.freedesktop.Sdk.Extension.texlive:
