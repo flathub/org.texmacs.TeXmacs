@@ -2,6 +2,8 @@ app-id: org.texmacs.TeXmacs
 runtime: org.kde.Platform
 runtime-version: "5.15-24.08"
 sdk: org.kde.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.texlive
 command: startTeXmacs.sh
 rename-desktop-file: texmacs.desktop
 rename-icon: texmacs
@@ -11,18 +13,28 @@ finish-args:
   - --device=dri
   - --share=ipc
   - --filesystem=xdg-documents
+  - --filesystem=~/.local/share/fonts:ro
   - --persist=.TeXmacs
-  - --env=PATH=/var/data/python/bin:/app/bin:/usr/bin
+  - --env=PATH=/var/data/python/bin:/app/bin:/usr/bin:/app/plugins/pack1/bin:/app/maxima/bin:/app/texlive/bin
 
 add-extensions:
   org.freedesktop.Sdk.Extension.texlive:
     version: "24.08"
     directory: texlive
     autodelete: false
+    no-autodownload: true
+    add-ld-path: lib
   org.texmacs.TeXmacs.Plugin:
-    versions: stable;beta;test
+    versions: stable;beta;test;master
     directory: plugins
     subdirectories: true
+    no-autodownload: true
+    autodelete: true
+    add-ld-path: lib
+  io.github.wxmaxima_developers.wxMaxima.Plugin.maxima:
+    versions: stable;beta;test;master
+    directory: maxima
+    subdirectories: false
     no-autodownload: true
     autodelete: true
     add-ld-path: lib
@@ -36,6 +48,7 @@ modules:
     build-commands:
       - install -d /app/texlive
       - install -d /app/plugins
+      - install -d /app/maxima
         
   - name: dictEs-aspell
     buildsystem: simple
@@ -122,6 +135,7 @@ modules:
     buildsystem: simple
     build-commands:
       - install -Dm755 pip.pyz -t /app/bin/
+      - ln -s /app/bin/pip.pyz /app/bin/pip
     sources:
       - type: file
         url: https://bootstrap.pypa.io/pip/pip.pyz
@@ -143,13 +157,15 @@ modules:
       - install -Dm644 TeXmacs/misc/images/texmacs-256.png /app/share/icons/hicolor/256x256/apps/texmacs.png
       - install -Dm755 startTeXmacs.sh /app/bin/startTeXmacs.sh
       - install -Dm755 xdg-open -t /app/bin/
-      - ln -s /app/bin/pip.pyz /app/bin/pip
+      - chmod +x search-configure-TEXfonts.sh && ./search-configure-TEXfonts.sh
     sources:
       - type: archive
         url: https://www.texmacs.org/Download/ftp/tmftp/source/TeXmacs-2.1.4-src.tar.gz
         sha256: 87a6922ee0ddac0b55cce9cd54fa8c1165fd58b0c7b640a33f2f495d69c18186
       - type: file
         path: startTeXmacs.sh
+      - type: file
+        path: search-configure-TEXfonts.sh
       - type: file
         path: org.texmacs.TeXmacs.appdata.xml
       - type: file
