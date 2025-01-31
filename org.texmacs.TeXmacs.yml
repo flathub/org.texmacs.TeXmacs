@@ -1,6 +1,6 @@
 app-id: org.texmacs.TeXmacs
 runtime: org.kde.Platform
-runtime-version: "5.15-24.08"
+runtime-version: "6.8"
 sdk: org.kde.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.texlive
@@ -158,9 +158,9 @@ modules:
       - install -Dm755 xdg-open -t /app/bin/
       - chmod +x search-configure-TEXfonts.sh && ./search-configure-TEXfonts.sh
     sources:
-      - type: archive
-        url: https://www.texmacs.org/Download/ftp/tmftp/source/TeXmacs-2.1.4-src.tar.gz
-        sha256: 87a6922ee0ddac0b55cce9cd54fa8c1165fd58b0c7b640a33f2f495d69c18186
+      - type: git
+        url: https://github.com/texmacs/texmacs.git
+        commit: db1c41beb3844bde17fdb643d677f15710016e76
       - type: file
         path: startTeXmacs.sh
       - type: file
