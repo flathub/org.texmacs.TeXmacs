@@ -119,18 +119,10 @@ modules:
     buildsystem: autotools
     config-opts:
       - --disable-static 
-      - --disable-error-on-warning
-    build-options:
-      arch:
-        aarch64:
-          config-opts:
-            - --build=aarch64-unknown-linux-gnu
     sources:
       - type: archive
-        url: http://ftp.gnu.org/gnu/guile/guile-1.8.8.tar.gz
-        sha256: c3471fed2e72e5b04ad133bbaaf16369e8360283679bcf19800bc1b381024050
-      - type: patch
-        path: guile-1.8.8-configure.patch
+        url: https://ftp.gnu.org/gnu/guile/guile-2.2.7.tar.xz
+        sha256: cdf776ea5f29430b1258209630555beea6d2be5481f9da4d64986b077ff37504
   - name: pip
     buildsystem: simple
     build-commands:
