@@ -8,8 +8,9 @@ command: startTeXmacs.sh
 rename-desktop-file: texmacs.desktop
 rename-icon: texmacs
 finish-args:
+  - --socket=wayland
+  - --socket=fallback-x11
   - --share=network
-  - --socket=x11
   - --device=dri
   - --share=ipc
   - --filesystem=xdg-documents
