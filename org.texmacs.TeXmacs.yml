@@ -114,6 +114,16 @@ modules:
         dest-filename: configure
         commands:
           - #/bin/sh
+          
+  - name: bdw-gc #guile
+    buildsystem: autotools
+    config-opts:
+      - --disable-debug
+      - --disable-docs
+    sources:
+      - type: git
+        url: https://github.com/ivmai/bdwgc
+        tag: v8.2.4
         
   - name: guile
     buildsystem: autotools
