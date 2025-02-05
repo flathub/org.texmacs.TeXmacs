@@ -166,7 +166,7 @@ modules:
         url: https://github.com/texmacs/texmacs.git
         commit: db1c41beb3844bde17fdb643d677f15710016e76
       - type: file
-        path: startTeXmacs.sh
+        path: wrapper/startTeXmacs.sh
       - type: file
         path: wrapper/firts_run.tm
       - type: file
