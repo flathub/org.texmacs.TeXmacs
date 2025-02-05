@@ -160,12 +160,15 @@ modules:
       - install -Dm755 startTeXmacs.sh /app/bin/startTeXmacs.sh
       - install -Dm755 xdg-open -t /app/bin/
       - chmod +x search-configure-TEXfonts.sh && ./search-configure-TEXfonts.sh
+      - install -Dm644 firts_run.tm -t /app/share/texmacs-flatpak/
     sources:
       - type: git
         url: https://github.com/texmacs/texmacs.git
         commit: db1c41beb3844bde17fdb643d677f15710016e76
       - type: file
         path: startTeXmacs.sh
+      - type: file
+        path: wrapper/firts_run.tm
       - type: file
         path: search-configure-TEXfonts.sh
       - type: file
