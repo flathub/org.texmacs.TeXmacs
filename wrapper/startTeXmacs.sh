@@ -16,4 +16,23 @@ fi
 
 export ASPELL_CONF='dict-dir /app/share/dicts'
 
-exec texmacs "$@"
+# Archivo de configuracion
+config_file="flat-config.conf"
+path_config_file="~/.TeXmacs"
+IDN="0"
+if [[ -f "${path_config_file}/${config_file}" ]]; then
+
+    source "${path_config_file}/${config_file}"
+
+    if [[ "$ID" == "$IDN" ]]; then
+      exec texmacs "$@"
+    else
+      echo "id=$IDN" >> "${path_config_file}/${config_file}"
+      exec texmacs /app/share/texmacs-flatpak/firts_run.tm
+    fi
+else
+
+   echo "id=$IDN" >> "${path_config_file}/${config_file}"
+   exec texmacs /app/share/texmacs-flatpak/firts_run.tm
+fi
+
