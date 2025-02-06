@@ -21,7 +21,7 @@
 	</p>
         <p>
             This package contains:
-                TeXLive, Gnuplot, Graphviz and Eukleides.
+                Gnuplot, Graphviz and Eukleides.
         </p>
         <p>
 	    To install python packages inside the sandbox run: 
