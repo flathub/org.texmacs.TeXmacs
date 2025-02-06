@@ -42,8 +42,6 @@ add-extensions:
 
 modules:
 
-  - pythonSoft.yml # symPy, numPy
-
   - name: texliveYextensions
     buildsystem: simple
     build-commands:
