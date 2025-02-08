@@ -138,7 +138,7 @@ modules:
     sources:
       - type: file
         url: https://bootstrap.pypa.io/pip/pip.pyz
-        sha256: c59df64b826d5baa978829fd1e1b3ea2e748f73dce7cce58d09aa28a1c9323a7
+        sha256: d5e4733b8c3933cfbb46f1338578bc4cb4c54d65a040d5dc230766ad3c53d8f7
   - name: xdg-utils # temporary #fake
     buildsystem: simple
     build-commands:
