@@ -21,7 +21,7 @@ export ASPELL_CONF='dict-dir /app/share/dicts'
 # Archivo de configuracion
 config_file="flat-config.conf"
 path_config_file=~/.TeXmacs
-IDN="0"
+IDN="1"
 if [[ -f "${path_config_file}/${config_file}" ]]; then
 
     source "${path_config_file}/${config_file}"

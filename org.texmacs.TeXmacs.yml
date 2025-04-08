@@ -16,7 +16,7 @@ finish-args:
   - --filesystem=xdg-documents
   - --filesystem=~/.local/share/fonts:ro
   - --persist=.TeXmacs
-  - --env=PATH=/var/data/python/bin:/app/bin:/usr/bin:/app/plugins/pack1/bin:/app/maxima/bin:/app/texlive/bin
+  - --env=PATH=/var/data/python/bin:/app/bin:/usr/bin:/app/plugins/pack1/bin:/app/plugins/maxima/bin:/app/texlive/bin
 
 add-extensions:
   org.freedesktop.Sdk.Extension.texlive:
@@ -32,22 +32,25 @@ add-extensions:
     no-autodownload: true
     autodelete: true
     add-ld-path: lib
-  io.github.wxmaxima_developers.wxMaxima.Plugin.maxima:
+  io.github.wxmaxima_developers.wxMaxima.Plugin:
     versions: stable;beta;test;master
-    directory: maxima
-    subdirectories: false
+    directory: plugins
+    subdirectories: true
     no-autodownload: true
     autodelete: true
     add-ld-path: lib
-
+    
+cleanup:
+  - /include
+  - /share/aclocal
+  - /share/man
+    
 modules:
-
   - name: texliveYextensions
     buildsystem: simple
     build-commands:
       - install -d /app/texlive
       - install -d /app/plugins
-      - install -d /app/maxima
         
   - name: dictEs-aspell
     buildsystem: simple
@@ -130,6 +133,20 @@ modules:
         sha256: c3471fed2e72e5b04ad133bbaaf16369e8360283679bcf19800bc1b381024050
       - type: patch
         path: guile-1.8.8-configure.patch
+        
+  - name: ghostscript
+    config-opts:
+      - --disable-cups
+    build-options:
+      ldflags: -L/app/lib
+      arch:
+        aarch64:
+          cppflags: -DPNG_ARM_NEON_OPT=0
+    sources:
+      - type: archive
+        url: https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10050/ghostscript-10.05.0.tar.gz
+        sha512: e6890e72e7734cfe9b923a7bafae9c38a3ccca650b51374e403b6754f972dbca8278f44b3e3b32465309aacc73382dffae1b8deccb5469ff3637f7f3353dace9
+
   - name: pip
     buildsystem: simple
     build-commands:
