@@ -150,12 +150,13 @@ modules:
   - name: pip
     buildsystem: simple
     build-commands:
-      - install -Dm755 pip.pyz -t /app/bin/
-      - ln -s /app/bin/pip.pyz /app/bin/pip
+      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}" --prefix=${FLATPAK_DEST} "pip" --no-build-isolation
+      - ln -s /app/bin/pip3 /app/bin/pip
     sources:
       - type: file
-        url: https://bootstrap.pypa.io/pip/pip.pyz
-        sha256: d5e4733b8c3933cfbb46f1338578bc4cb4c54d65a040d5dc230766ad3c53d8f7
+        url: https://files.pythonhosted.org/packages/c9/bc/b7db44f5f39f9d0494071bddae6880eb645970366d0a200022a1a93d57f5/pip-25.0.1-py3-none-any.whl
+        sha256: c46efd13b6aa8279f33f2864459c8ce587ea6a1a59ee20de055868d8f7688f7f
+    
   - name: xdg-utils # temporary #fake
     buildsystem: simple
     build-commands:
