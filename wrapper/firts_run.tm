@@ -34,11 +34,14 @@
   TeXLive is not included with the package by default, it can be installed by
   running,
 
-  \;
-
   <verbatim|flatpak install org.freedesktop.Sdk.Extension.texlive//24.08>
 
-  \;
+  The package has now been reduced in the number of dependencies it contains,
+  such as Bibtex and Perl. If you have any problems with the current version,
+  you can try downgrading to its full version with the command,
+
+  <verbatim|sudo flatpak update --commit=4e7a7b06daecce8d059de8552ddce67b414ab5599b99e09170a610e409fb7276
+  org.freedesktop.Sdk.Extension.texlive>
 
   The download is around 5.5G and takes up 8.5G according to Flathub. Note
   that TeXmacs is only compatible with a certain version of the TeXLive
