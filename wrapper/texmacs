@@ -27,14 +27,14 @@ if [[ -f "${path_config_file}/${config_file}" ]]; then
     source "${path_config_file}/${config_file}"
 
     if [[ "$ID" == "$IDN" ]]; then
-      exec texmacs "$@"
+      exec texmacs-bin "$@"
     else
       echo "ID=$IDN" > "${path_config_file}/${config_file}"
-      exec texmacs /app/share/texmacs-flatpak/firts_run.tm
+      exec texmacs-bin /app/share/texmacs-flatpak/firts_run.tm
     fi
 else
     touch "${path_config_file}/${config_file}"
     echo "ID=$IDN" > "${path_config_file}/${config_file}"
-    exec texmacs /app/share/texmacs-flatpak/firts_run.tm
+    exec texmacs-bin /app/share/texmacs-flatpak/firts_run.tm
 fi
 
