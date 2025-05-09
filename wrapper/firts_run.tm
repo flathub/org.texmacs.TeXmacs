@@ -40,8 +40,8 @@
 
   \;
 
-  The download is around 5.5G and takes up 8.5G according to Flathub. Note
-  that TeXmacs is only compatible with a certain version of the TeXLive
+  The download is around 2.6 GiB and takes up 5.5 GiB according to Flathub.
+  Note that TeXmacs is only compatible with a certain version of the TeXLive
   package, and can be shared with other Flatpaks, only if they use that same
   version.
 
