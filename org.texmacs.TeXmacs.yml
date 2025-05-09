@@ -172,7 +172,8 @@ modules:
       - desktop-file-edit --set-key=Exec --set-value="startTeXmacs.sh %F" /app/share/applications/texmacs.desktop
       - desktop-file-edit --set-key=Keywords --set-value="LATEX;Giac;Macaulay;TeXLive;Gnuplot;Maxima;" /app/share/applications/texmacs.desktop
       - install -Dm644 TeXmacs/misc/images/texmacs-256.png /app/share/icons/hicolor/256x256/apps/texmacs.png
-      - install -Dm755 startTeXmacs.sh /app/bin/startTeXmacs.sh
+      - mv /app/bin/texmacs /app/bin/texmacs-bin
+      - install -Dm755 texmacs /app/bin/texmacs
       - install -Dm755 xdg-open -t /app/bin/
       - chmod +x search-configure-TEXfonts.sh && ./search-configure-TEXfonts.sh
       - install -Dm644 firts_run.tm -t /app/share/texmacs-flatpak/
@@ -181,7 +182,7 @@ modules:
         url: https://github.com/texmacs/texmacs.git
         commit: db1c41beb3844bde17fdb643d677f15710016e76
       - type: file
-        path: wrapper/startTeXmacs.sh
+        path: wrapper/texmacs
       - type: file
         path: wrapper/firts_run.tm
       - type: file
