@@ -24,9 +24,7 @@
                 Gnuplot, Graphviz and Eukleides.
         </p>
         <p>
-	    To install python packages inside the sandbox run: 
-		1) flatpak run --command=sh org.texmacs.TeXmacs 
-		2) pip install --user package
+	    It also has plugins that can extend the functionalities.
 	</p>
     </description>
 
