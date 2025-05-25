@@ -174,6 +174,8 @@ modules:
       - type: git
         url: https://github.com/texmacs/texmacs.git
         commit: db1c41beb3844bde17fdb643d677f15710016e76
+      - type: patch
+        path: init-cadabra.scm.patch
       - type: file
         path: wrapper/texmacs
       - type: file
