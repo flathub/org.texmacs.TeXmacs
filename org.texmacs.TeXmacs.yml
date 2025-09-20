@@ -188,3 +188,12 @@ modules:
         path: org.texmacs.TeXmacs.appdata.xml
       - type: file
         path: xdg-open
+
+  - name: plugins-for-TeXmacs
+    buildsystem: simple
+    build-commands:
+      - mv miscellanea/languagetool /app/share/TeXmacs/plugins/
+    sources:
+      - type: git
+        url: https://github.com/texmacs/tm-forge.git
+        commit: 3dd62edb48336c7d245af29ae2eb91fa009b54b7
