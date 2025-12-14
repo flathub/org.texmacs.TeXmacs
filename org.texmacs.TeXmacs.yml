@@ -78,6 +78,7 @@ modules:
       - --disable-static 
       - --disable-error-on-warning
     build-options:
+      cflags: -Wno-error=incompatible-pointer-types
       arch:
         aarch64:
           config-opts:
