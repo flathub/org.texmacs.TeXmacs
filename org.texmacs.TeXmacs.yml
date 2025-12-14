@@ -81,7 +81,7 @@ modules:
     sources:
       - type: git
         url: https://salsa.debian.org/georgesk/eukleides.git
-        sha256: 4497f147a0c08ebdcd094d49c49fa31a52f6888e
+        commit: 4497f147a0c08ebdcd094d49c49fa31a52f6888e
       - type: script   
         dest-filename: configure
         commands:
