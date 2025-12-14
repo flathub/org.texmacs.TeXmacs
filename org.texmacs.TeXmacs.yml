@@ -71,21 +71,6 @@ modules:
       - type: archive
         url: https://prdownloads.sourceforge.net/gnuplot/5.4.10/gnuplot-5.4.10.tar.gz
         sha256: 975d8c1cc2c41c7cedc4e323aff035d977feb9a97f0296dd2a8a66d197a5b27c
-
-  - name: eukleides # Debian 
-    buildsystem: autotools
-    build-options:
-      cflags: -Wno-error=incompatible-pointer-types
-      make-install-args:
-        - PREFIX=/app
-    sources:
-      - type: git
-        url: https://salsa.debian.org/georgesk/eukleides.git
-        commit: 4497f147a0c08ebdcd094d49c49fa31a52f6888e
-      - type: script   
-        dest-filename: configure
-        commands:
-          - #/bin/sh
         
   - name: guile
     buildsystem: autotools
