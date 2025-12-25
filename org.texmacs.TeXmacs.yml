@@ -77,18 +77,10 @@ modules:
     config-opts:
       - --disable-static 
       - --disable-error-on-warning
-    build-options:
-      cflags: -Wno-error=incompatible-pointer-types
-      arch:
-        aarch64:
-          config-opts:
-            - --build=aarch64-unknown-linux-gnu
     sources:
       - type: archive
-        url: http://ftp.gnu.org/gnu/guile/guile-1.8.8.tar.gz
-        sha256: c3471fed2e72e5b04ad133bbaaf16369e8360283679bcf19800bc1b381024050
-      - type: patch
-        path: guile-1.8.8-configure.patch
+        url: http://ftp.gnu.org/gnu/guile/guile-3.0.11.tar.xz
+        sha256: 818c79d236657a7fa96fb364137cc7b41b3bdee0d65c6174ca03769559579460
         
   - name: ghostscript
     config-opts:
