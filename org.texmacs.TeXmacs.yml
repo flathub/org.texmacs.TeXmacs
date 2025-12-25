@@ -105,8 +105,8 @@ modules:
           cppflags: -DPNG_ARM_NEON_OPT=0
     sources:
       - type: archive
-        url: https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10050/ghostscript-10.05.0.tar.gz
-        sha512: e6890e72e7734cfe9b923a7bafae9c38a3ccca650b51374e403b6754f972dbca8278f44b3e3b32465309aacc73382dffae1b8deccb5469ff3637f7f3353dace9
+        url: https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10060/ghostpdl-10.06.0.tar.gz
+        sha256: 80dd50abf5970f49140ca7c0c19475cc2707437f89e8a825e670ba101003f1d8
 
   - name: sympy
     buildsystem: simple
