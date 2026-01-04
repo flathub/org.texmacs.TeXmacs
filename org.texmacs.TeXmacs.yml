@@ -79,6 +79,10 @@ modules:
       - --disable-error-on-warning
     build-options:
       cflags: -std=gnu17
+      arch:
+        aarch64:
+          config-opts:
+            - --build=aarch64-unknown-linux-gnu
     sources:
       - type: archive
         url: http://ftp.gnu.org/gnu/guile/guile-1.8.8.tar.gz
