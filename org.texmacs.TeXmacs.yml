@@ -65,7 +65,8 @@ modules:
       - type: archive
         url: https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/10.0.1/graphviz-10.0.1.tar.gz
         sha256: 72e1a575e9c382c4fd2267837962bc4582b3d9ad746e338cd8024bdeca124f32
-    - name: eukleides # Debian patches
+        
+  - name: eukleides # Debian patches
     buildsystem: autotools
     build-options:
       cflags: -std=gnu17
