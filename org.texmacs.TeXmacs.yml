@@ -65,6 +65,33 @@ modules:
       - type: archive
         url: https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/10.0.1/graphviz-10.0.1.tar.gz
         sha256: 72e1a575e9c382c4fd2267837962bc4582b3d9ad746e338cd8024bdeca124f32
+    - name: eukleides # Debian patches
+    buildsystem: autotools
+    build-options:
+      cflags: -std=gnu17
+      make-install-args:
+        - PREFIX=/app
+    sources:
+      - type: archive
+        url: http://deb.debian.org/debian/pool/main/e/eukleides/eukleides_1.5.4.orig.tar.gz
+        sha256: 5e72ad3c469bb37de7094d278af313e5620f9901c0af40bf8ad4df57e61e3ba6
+      - type: patch
+        path: patch-eukleides/cross.patch
+      - type: patch
+        path: patch-eukleides/fix_gcc-10.patch
+      - type: patch
+        path: patch-eukleides/ld-as-needed.diff
+      - type: patch
+        path: patch-eukleides/old-patches.diff
+      - type: patch
+        path: patch-eukleides/spelling-mistakes.diff
+      - type: patch
+        path: patch-eukleides/utf-8.patch
+      - type: script   
+        dest-filename: configure
+        commands:
+          - #/bin/sh
+          
   - name: gnuplot
     buildsystem: autotools
     sources:
