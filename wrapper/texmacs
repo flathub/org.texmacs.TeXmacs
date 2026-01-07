@@ -23,7 +23,7 @@ for DIR in /app/plugins/*; do
 done
 
 export PATH
-export PYTHONPATH=/app/plugins/cadabra/lib/python3.12/site-packages
+export PYTHONPATH=/app/plugins/cadabra/lib/python3.13/site-packages
 
 # Archivo de configuracion
 config_file="flat-config.conf"

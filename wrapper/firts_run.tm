@@ -36,7 +36,7 @@
 
   \;
 
-  <verbatim|flatpak install org.freedesktop.Sdk.Extension.texlive//24.08>
+  <verbatim|flatpak install org.freedesktop.Sdk.Extension.texlive//25.08>
 
   \;
 
