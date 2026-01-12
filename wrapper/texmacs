@@ -16,6 +16,11 @@ if [ "$(ls -A /app/texlive)" ]; then
   export PERL5LIB=/app/texlive/lib/perl5/${perl_version}:/app/texlive/lib/perl5/site_perl/${perl_version}
 fi
 
+W_support=""
+if [[ "$XDG_SESSION_TYPE" == "wayland" ]]; then
+  W_support="-platform wayland"
+fi
+
 for DIR in /app/plugins/*; do
   if [ -d "$DIR/bin" ]; then
     PATH="$DIR/bin:$PATH"
@@ -34,14 +39,14 @@ if [[ -f "${path_config_file}/${config_file}" ]]; then
     source "${path_config_file}/${config_file}"
 
     if [[ "$ID" == "$IDN" ]]; then
-      exec texmacs-bin "$@"
+      exec texmacs-bin $W_support "$@"
     else
       echo "ID=$IDN" > "${path_config_file}/${config_file}"
-      exec texmacs-bin /app/share/texmacs-flatpak/firts_run.tm
+      exec texmacs-bin $W_support /app/share/texmacs-flatpak/firts_run.tm
     fi
 else
     touch "${path_config_file}/${config_file}"
     echo "ID=$IDN" > "${path_config_file}/${config_file}"
-    exec texmacs-bin /app/share/texmacs-flatpak/firts_run.tm
+    exec texmacs-bin $W_support /app/share/texmacs-flatpak/firts_run.tm
 fi
 
