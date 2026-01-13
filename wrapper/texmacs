@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 mkdir -p ~/.TeXmacs
 
@@ -14,6 +14,11 @@ if [ "$(ls -A /app/texlive)" ]; then
   PATH=/app/texlive/bin/${architecture_type}-linux:${PATH}
   export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/app/texlive/lib/perl5/${perl_version}/${architecture_type}-linux/CORE
   export PERL5LIB=/app/texlive/lib/perl5/${perl_version}:/app/texlive/lib/perl5/site_perl/${perl_version}
+fi
+
+W_support=""
+if [[ "$XDG_SESSION_TYPE" == "wayland" ]]; then
+  W_support="-platform wayland"
 fi
 
 for DIR in /app/plugins/*; do
@@ -34,14 +39,14 @@ if [[ -f "${path_config_file}/${config_file}" ]]; then
     source "${path_config_file}/${config_file}"
 
     if [[ "$ID" == "$IDN" ]]; then
-      exec texmacs-bin "$@"
+      exec texmacs-bin $W_support "$@"
     else
       echo "ID=$IDN" > "${path_config_file}/${config_file}"
-      exec texmacs-bin /app/share/texmacs-flatpak/firts_run.tm
+      exec texmacs-bin $W_support /app/share/texmacs-flatpak/firts_run.tm
     fi
 else
     touch "${path_config_file}/${config_file}"
     echo "ID=$IDN" > "${path_config_file}/${config_file}"
-    exec texmacs-bin /app/share/texmacs-flatpak/firts_run.tm
+    exec texmacs-bin $W_support /app/share/texmacs-flatpak/firts_run.tm
 fi
 
