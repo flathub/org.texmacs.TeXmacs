@@ -8,8 +8,7 @@ command: texmacs
 rename-desktop-file: texmacs.desktop
 rename-icon: texmacs
 finish-args:
-  - --socket=wayland
-  - --socket=fallback-x11
+  - --socket=x11
   - --share=network
   - --device=dri
   - --share=ipc
