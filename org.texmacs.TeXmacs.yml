@@ -43,6 +43,10 @@ cleanup:
   - /include
   - /share/aclocal
   - /share/man
+  - /share/info
+  - /lib/pkgconfig
+  - ".la"
+  - ".a"
     
 modules:
   - name: texliveYextensions
