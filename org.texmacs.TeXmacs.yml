@@ -58,9 +58,10 @@ modules:
   - name: magick
     buildsystem: autotools
     sources:
-      - type: archive
-        url: https://github.com/ImageMagick/ImageMagick/archive/refs/tags/7.1.1-21.tar.gz
-        sha256: 09402e5f17c6575ef9f010bb2e21ae1710f1f3426f115ad4317ee9129c32608e
+      - type: git
+        url: https://github.com/ImageMagick/ImageMagick.git
+        tag: 7.1.2-13
+        commit: dd991e286b96918917a3392d6dc3ffc0e6907a4e
         
   - name: graphviz
     buildsystem: autotools
