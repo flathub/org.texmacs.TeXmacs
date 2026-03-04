@@ -55,7 +55,17 @@ modules:
     build-commands:
       - install -d /app/texlive
       - install -d /app/plugins
-        
+
+  - name: wrappers # acceso al host
+    buildsystem: simple
+    build-commands:
+      - install -Dm755 -t /app/bin pdf2svg
+    sources:
+      - type: script
+        dest-filename: pdf2svg
+        commands:
+          - exec flatpak-spawn --host pdf2svg "$@"
+      
   - name: magick
     buildsystem: autotools
     sources:
