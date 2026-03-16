@@ -11,7 +11,7 @@
   so all the tools it has are those tested in the package and can be
   installed via plugins.
 
-  It already includes Gnuplot, SymPy, Graphviz and Eukleides and pip, to
+  It already includes Gnuplot, Graphviz and Eukleides and pip, to
   install python packages.
 
   Access to the system is restricted only to the "Documents" folder, if you
