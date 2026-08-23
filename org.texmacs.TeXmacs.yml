@@ -78,6 +78,9 @@ modules:
         url: https://github.com/dawbarton/pdf2svg.git
         commit: 2371ca32926354227f58ce6cab18a7bd54136252
         tag: v0.2.4
+      - type: shell
+        commands:
+          - autoreconf -vfi;
         
   - name: magick
     buildsystem: autotools
