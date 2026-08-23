@@ -55,6 +55,21 @@ modules:
     build-commands:
       - install -d /app/texlive
       - install -d /app/plugins
+      
+  - name: poppler #pdf2svg
+    buildsystem: cmake-ninja
+    sources:
+      - type: archive
+        url: https://poppler.freedesktop.org/poppler-26.02.0.tar.xz
+        sha256: dded8621f7b2f695c91063aab1558691c8418374cd583501e89ed39487e7ab77
+        
+  - name: pdf2svg
+    buildsystem: autotools
+    sources:
+      - type: git
+        url: https://github.com/dawbarton/pdf2svg.git
+        commit: 2371ca32926354227f58ce6cab18a7bd54136252
+        tag: v0.2.4
         
   - name: magick
     buildsystem: autotools
