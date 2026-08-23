@@ -61,7 +61,12 @@ modules:
     config-opts:
       - -DENABLE_QT5=OFF
       - -DBUILD_QT5_TESTS=OFF
+      - -DENABLE_QT6=OFF
+      - -DBUILD_QT6_TESTS=OFF
       - -DBUILD_GTK_TESTS=OFF
+      - -DENABLE_GLIB=OFF
+      - -DENABLE_BOOST=OFF
+      - -DBUILD_MANUAL_TESTS=OFF
     sources:
       - type: archive
         url: https://poppler.freedesktop.org/poppler-26.08.0.tar.xz
