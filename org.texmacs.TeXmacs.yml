@@ -64,7 +64,6 @@ modules:
       - -DENABLE_QT6=OFF
       - -DBUILD_QT6_TESTS=OFF
       - -DBUILD_GTK_TESTS=OFF
-      - -DENABLE_GLIB=OFF
       - -DENABLE_BOOST=OFF
       - -DBUILD_MANUAL_TESTS=OFF
     sources:
