@@ -55,6 +55,32 @@ modules:
     build-commands:
       - install -d /app/texlive
       - install -d /app/plugins
+      
+  - name: poppler #pdf2svg
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DENABLE_QT5=OFF
+      - -DBUILD_QT5_TESTS=OFF
+      - -DENABLE_QT6=OFF
+      - -DBUILD_QT6_TESTS=OFF
+      - -DBUILD_GTK_TESTS=OFF
+      - -DENABLE_BOOST=OFF
+      - -DBUILD_MANUAL_TESTS=OFF
+    sources:
+      - type: archive
+        url: https://poppler.freedesktop.org/poppler-26.08.0.tar.xz
+        sha256: dc906e68cea698109706ac6aa3d2c9d4512fcfcac42d90b8afcda486d1b9abd0
+        
+  - name: pdf2svg
+    buildsystem: autotools
+    sources:
+      - type: git
+        url: https://github.com/dawbarton/pdf2svg.git
+        commit: 2371ca32926354227f58ce6cab18a7bd54136252
+        tag: v0.2.4
+      - type: shell
+        commands:
+          - autoreconf -vfi;
         
   - name: magick
     buildsystem: autotools
